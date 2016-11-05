@@ -17,6 +17,19 @@ then
   wget -qO- https://get.docker.com/ | sh
 fi
 
+
+####
+## INSTALLING DOCKER-COMPOSE
+####
+e "Checking docker compose installation"
+dockercomposev=$(docker-compose --version 2>&1)
+if [[ $dockercomposev != "docker-compose"* ]]
+then
+    e "Installing docker compose"
+    sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+    sudo chmod +x /usr/local/bin/docker-compose
+fi
+
 ####
 ## INSTALLING LOCALES
 ####
